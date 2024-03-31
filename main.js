@@ -1,3 +1,9 @@
+let history;
+try {
+    history = JSON.parse(localStorage.getItem("history"));
+} catch (SyntaxError){
+    history = [];
+}
 let turn = "O";
 let xChecker = [
   [0, 0, 0],
@@ -22,23 +28,28 @@ let slot8 = document.getElementById("slot8");
 let slot9 = document.getElementById("slot9");
 let turnLable = document.getElementById("turn");
 let record = document.getElementById("record");
+let reset = document.getElementById("Reset");
+
+reset.onclick = () => {
+    history = [];
+    localStorage.setItem("history", history);
+    location.reload();
+}
+
+(function (){
+    for (let i = 0; i < history.length; i++)
+    {
+    let gameRecord = document.createElement("span");
+    gameRecord.innerText = `${i + 1} - ${history[i]}`;
+    record.appendChild(gameRecord);
+    }
+})()
 
 function setHistory(turn) {
-  let history = [];
   let historymonotalog = `${turn} won `;
   history.push(historymonotalog);
   let History = JSON.stringify(history);
   localStorage.setItem("history", History);
-}
-
-function showRecord() {
-  let history = JSON.parse(localStorage.getItem("history"));
-  let historyCatalog = document.createElement("ul");
-  for (let i = 0; i < history.length; i++) {
-    let line = document.createElement("li");
-    line.innerHTML = history[i];
-    historyCatalog.appendChild(line);
-  }
 }
 
 function gameOver() {
@@ -115,7 +126,6 @@ slot1.addEventListener("click", function checkTheBox() {
     turnLable.innerText = `${turn} just played , it's your turn`;
   }
   turns++;
-  console.log(turn, turns, xChecker, oChecker);
   checkForWinner();
   slot1.removeEventListener("click", checkTheBox);
 });
@@ -132,7 +142,6 @@ slot2.addEventListener("click", function checkTheBox() {
     turnLable.innerText = `${turn} just played , it's your turn`;
   }
   turns++;
-  console.log(turn, turns, xChecker, oChecker);
   checkForWinner();
   slot2.removeEventListener("click", checkTheBox);
 });
@@ -149,7 +158,6 @@ slot3.addEventListener("click", function checkTheBox() {
     turnLable.innerText = `${turn} just played , it's your turn`;
   }
   turns++;
-  console.log(turn, turns, xChecker, oChecker);
   checkForWinner();
   slot3.removeEventListener("click", checkTheBox);
 });
@@ -166,7 +174,6 @@ slot4.addEventListener("click", function checkTheBox() {
     turnLable.innerText = `${turn} just played , it's your turn`;
   }
   turns++;
-  console.log(turn, turns, xChecker, oChecker);
   checkForWinner();
   slot4.removeEventListener("click", checkTheBox);
 });
@@ -183,7 +190,6 @@ slot5.addEventListener("click", function checkTheBox() {
     turnLable.innerText = `${turn} just played , it's your turn`;
   }
   turns++;
-  console.log(turn, turns, xChecker, oChecker);
   checkForWinner();
   slot5.removeEventListener("click", checkTheBox);
 });
@@ -200,7 +206,6 @@ slot6.addEventListener("click", function checkTheBox() {
     turnLable.innerText = `${turn} just played , it's your turn`;
   }
   turns++;
-  console.log(turn, turns, xChecker, oChecker);
   checkForWinner();
   slot6.removeEventListener("click", checkTheBox);
 });
@@ -217,7 +222,6 @@ slot7.addEventListener("click", function checkTheBox() {
     turnLable.innerText = `${turn} just played , it's your turn`;
   }
   turns++;
-  console.log(turn, turns, xChecker, oChecker);
   checkForWinner();
   slot7.removeEventListener("click", checkTheBox);
 });
@@ -234,7 +238,6 @@ slot8.addEventListener("click", function checkTheBox() {
     turnLable.innerText = `${turn} just played , it's your turn`;
   }
   turns++;
-  console.log(turn, turns, xChecker, oChecker);
   checkForWinner();
   slot8.removeEventListener("click", checkTheBox);
 });
@@ -251,8 +254,6 @@ slot9.addEventListener("click", function checkTheBox() {
     turnLable.innerText = `${turn} just played , it's your turn`;
   }
   turns++;
-  console.log(turn, turns, xChecker, oChecker);
   checkForWinner();
   slot9.removeEventListener("click", checkTheBox);
 });
-showRecord();
