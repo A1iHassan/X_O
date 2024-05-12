@@ -34,7 +34,6 @@ header {
 .O {
   font-size: 17ch;
   font-family: Arial, Helvetica, sans-serif;
-  
 }
 .turn {
   display: block;
@@ -119,7 +118,7 @@ button {
   font-size: 0.7ch;
 }
 
-@media(max-width:1000px) {
+@media (max-width: 1000px) {
   body {
     display: flex;
     flex-direction: column;
@@ -143,7 +142,7 @@ button {
   .X,
   .O {
     font-size: 9ch;
-    font-family: Arial, Helvetica, sans-serif; 
+    font-family: Arial, Helvetica, sans-serif;
   }
   .endScreen {
     position: absolute;
@@ -158,6 +157,7 @@ button {
     text-align: center;
     font-size: 2ch;
     padding-top: 3rem;
+    margin-inline: auto;
   }
   .restart {
     width: 3.5rem;
