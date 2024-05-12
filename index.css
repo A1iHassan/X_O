@@ -124,6 +124,7 @@ button {
     flex-direction: column;
     gap: 2rem;
     justify-content: center;
+    margin-bottom: 3rem;
   }
   h1 {
     margin-left: 1.3rem;
